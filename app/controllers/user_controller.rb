@@ -3,19 +3,19 @@ require "http"
 require "json"
 
   def index
-    @tweets =  get_tweets(userid: '@trueX')
+    @tweets = get_tweets
+    #@tweets.each  { |tweet| puts tweet['text']}
   end
 
   def byid
   end
 
 protected
-  def get_tweets(userid: nil)
+  def get_tweets(userid: 'trueX')
     activeToken ||= token
-    puts activeToken
     url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
     params = {}
-    params['screen_name'] = 'trueX'
+    params['screen_name'] = userid
     params['count'] = 20
     result = HTTP.auth('Bearer ' + activeToken).headers(accept: '*/*').get(url, params: params)
     response = JSON.parse(result.body)
