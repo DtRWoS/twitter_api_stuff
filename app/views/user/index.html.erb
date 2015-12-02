@@ -1,5 +1,5 @@
 <h1>User#index</h1>
 <% @tweets.each do |tweet| %>
-  <p><%= tweet['text'] %></p>
+  <p><%= tweet['text'].gsub(/(@[a-zA-Z0-9_]{1,15})/){|match| link_to(match, user_path(byid: match))}.html_safe %></p>
 <% end %>
 
