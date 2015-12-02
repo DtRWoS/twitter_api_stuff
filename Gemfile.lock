@@ -160,6 +160,7 @@ DEPENDENCIES
   http
   jbuilder (~> 2.0)
   jquery-rails
+  json
   puma
   rails (= 4.2.3)
   sass-rails (~> 5.0.3)

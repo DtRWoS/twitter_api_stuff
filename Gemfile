@@ -47,3 +47,4 @@ end
 
 gem 'puma'
 gem 'http'
+gem 'json'

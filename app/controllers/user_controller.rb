@@ -1,5 +1,7 @@
 class UserController < ApplicationController
 require "http"
+require "json"
+
 @activeToken
 
   def index
@@ -12,7 +14,6 @@ require "http"
 protected
   def get_tweets(userid: nil)
     activeToken ||= token
-    activeToken.to_a
     #https://api.twitter.com/1.1/statuses/user_timeline.json
   end
 
@@ -26,8 +27,7 @@ protected
     options[:accept]        = '*/*'
     body[:grant_type]       = 'client_credentials'
     url = 'https://api.twitter.com/oauth2/token'
-    response = HTTP.auth(token).headers(options).post(url, form: body).to_a
-    #response = HTTP.with(options).post(url, form: body)
-    #response #.parse['access_token']
+    response = JSON.parse(HTTP.auth(token).headers(options).post(url, form: body).body)
+    response['access_token']
   end
 end
