@@ -8,6 +8,7 @@ require "json"
   end
 
   def byid
+    @tweets = get_tweets(userid: params[:byid])
   end
 
 protected
