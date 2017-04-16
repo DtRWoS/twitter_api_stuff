@@ -13,7 +13,7 @@ require "json"
   end
 
 protected
-  def get_tweets(userid: '@stackcommerece')
+  def get_tweets(userid: '@stackcommerce')
     activeToken ||= token
     url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
     params = {}
