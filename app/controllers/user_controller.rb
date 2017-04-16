@@ -12,12 +12,12 @@ require "json"
   end
 
 protected
-  def get_tweets(userid: '@trueX')
+  def get_tweets(userid: '@stackcommerece')
     activeToken ||= token
     url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
     params = {}
     params['screen_name'] = userid
-    params['count'] = 20
+    params['count'] = 25
     result = HTTP.auth('Bearer ' + activeToken).headers(accept: '*/*').get(url, params: params)
     response = JSON.parse(result.body)
   end
