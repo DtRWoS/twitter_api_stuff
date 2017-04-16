@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+http_basic_authenticate_with name: "user", password: "pass"
 require "http"
 require "json"
 
